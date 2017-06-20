@@ -98,11 +98,22 @@
 
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
-\blindtext % Dummy text
+The era of cloud computing has reshaped the internet and allowed for many new classes of applications to be built. Despite these advancements, building cloud-based applications for elections on representative democracies have remained challenge. This is the case because most election processes must meet very strict requirements to remain consitutional:\footnote{The reader should know that this paper will focus on the brazilian election process. However many of the issues documented here are shared by other nations with similar governance models.}:
+\begin{enumerate}
+\item Anonymity
+\item The election process must not be postponed due to system failure.
+\item Each elector has the right to a single vote.
+\end{enumerate}
 
-\blindtext % Dummy text
+Despite redundancy and server mirroring techniques, the traditional server-client architectures are still vulnerable to DDoS attacks, with even high-end, scalable applications either suffering major performance issues or crashing altogether during such attacks.\cite{1},\cite{2},\cite{3}.
 
+Consider a presidential election using a web-based application that displays election results while the voting is taking place. If a given party notices that it's candidate is losing, it might initiate a distributed attack on the servers that provide the backend that is used to count and collect votes. 
+
+By moving the backend to a blockchain with enough nodes, an application becomes invunerable to such an attack since the number of targets an attacker grows lineraly with the number of nodes on the network (eg. $O(n)$ where n is the number of nodes on the network). Furthermore, by  programming the blockchain and turning a vote into a cryptocurrency, the system immediatly gains the benefit of guaranteeing that no vote can be issued "out of thin air". Section 2 of this paper, describes how Ethereum smart contracts are used implement this feature.
+
+The servers that provide the frontend of the same example may also be subject to attack. To guarantee it's availability, the frontend can be made a serverless application that interacts from the client side with the smart contracts hosted on the blockchain.It can be hosted on an incentivized peer-to-peer storage system such that the application becomes completly decentralized. Section 3 describes in detail how Swarm can be used to acomplish this.
+
+The current voting process used in Brazil is considered by many not transparent\cite{1} due to the fact that auditing of the voting machines can only be audited with permission by from a central authority \cite{2} which seldom does so\cite{3}.In one occasion that the Supreme Electoral Court gave such permission, a group of researchers from Universidade de Bras\'ilia found multiple security vunerabilities\cite{4},\cite{5},\cite{6} that could be exploited.
 %------------------------------------------------
 
 \section{The Problem}
