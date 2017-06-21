@@ -19,8 +19,8 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[twoside,twocolumn]{article}
-%\documentclass[twoside]{article}
+%\documentclass[twoside,twocolumn]{article}
+\documentclass[twoside]{article}
 
 \usepackage{blindtext} % Package to generate dummy text throughout this template 
 
@@ -109,13 +109,17 @@ The era of cloud computing has reshaped the internet and allowed for many new cl
 
 Despite redundancy and server mirroring techniques, the traditional server-client architectures are still vulnerable to DDoS attacks, with even high-end, scalable applications either suffering major performance issues or crashing altogether during such attacks.\cite{1},\cite{2},\cite{3}.
 
-Consider a presidential election using a web-based application that displays election results while the voting is taking place. If a given party notices that it's candidate is losing, it might initiate a distributed attack on the servers that provide the backend that is used to count and collect votes. 
+Consider a presidential election using a web-based application that displays election results in real time. If a given party notices that it's candidate is losing, it might initiate a distributed attack on the servers that provide the backend that is used to count and collect votes. 
 
-By moving the backend to a blockchain with enough nodes, an application becomes invunerable to such an attack since the number of targets an attacker grows lineraly with the number of nodes on the network (eg. $O(n)$ where n is the number of nodes on the network). Furthermore, by  programming the blockchain and turning a vote into a cryptocurrency, the system immediatly gains the benefit of guaranteeing that no vote can be issued "out of thin air". Section 2 of this paper, describes how Ethereum smart contracts are used implement this feature.
+By moving the backend to a blockchain with enough nodes, an application becomes invunerable to such an attack since the number of addresses an attacker must target grows lineraly with the number of nodes on the network (eg. $O(n)$ where n is the number of nodes on the network). Furthermore, by  programming the blockchain and turning each vote into cryptocoin, the system immediatly gains the benefit of guaranteeing that no vote can be issued "out of thin air". Section 2 of this paper, describes how to implement issue such a token through the use of Ethereum smart contracts.\cite{4}.
 
-The servers that provide the frontend of the same example may also be subject to attack. To guarantee it's availability, the frontend can be made a serverless application that interacts from the client side with the smart contracts hosted on the blockchain.It can be hosted on an incentivized peer-to-peer storage system such that the application becomes completly decentralized. Section 3 describes in detail how Swarm can be used to acomplish this.
+Although blockchain smart contracts solve a specific set of problems very well, they are not suitable for every problem. On the Ethereum Virtual Machine \footnote{EVM and World Computer definition}, each computational step requires a certain amount of gas\footnote{Gas definition} to be paid to the miners as incentive to run the World Computer and for developers to write efficient code. Although this works well to prevent attacks on the EVM through smart contracts, it also makes the implementation of computationally intense cod such as computer graphics rendering way too expensive to be run. The solution proposed on this document, is to move all code that is not crucial to the blockchain to the client side.
 
-The current voting process used in Brazil is considered by many not transparent\cite{1} due to the fact that auditing of the voting machines can only be audited with permission by from a central authority \cite{2} which seldom does so\cite{3}.In one occasion that the Supreme Electoral Court gave such permission, a group of researchers from Universidade de Bras\'ilia found multiple security vunerabilities\cite{4},\cite{5},\cite{6} that could be exploited.
+Similarly it is also very expensive to data large amounts of data on the blockchain since every full node must have a copy of every state of that data.The question then becomes, how to make the frontend of the distributed application available while keeping the DDoS resistant and zero-downtime qualities provided by blockchain applications?
+
+Section 3 of this document details how the frontend can be made into an AngularJS\footnote{AngularJS definition} serverless web application by moving the code and resources to an incentivized peer-to-peer storage system. This causes the it to gain DDoS resistance and zero-downtime characteristics of blockchain-only based applications while keeping operation costs low and providing the usual WWW experience users are used to. Once both the backend and frontend are moved away from centralized servers the whole application becomes truly distributed.
+
+
 %------------------------------------------------
 
 \section{The Problem}
@@ -137,21 +141,6 @@ Text requiring further explanation\footnote{Example footnote}.
 %------------------------------------------------
 
 \section{The Proposed Solution}
-
-\begin{table}
-\caption{Example table}
-\centering
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \blindtext % Dummy text
 
