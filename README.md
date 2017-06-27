@@ -1,2 +1,2 @@
-# EtherVotes Paper (Portuguese)
-This repository holds the initial draft for the EtherVotes project. (pt-BR)
+# EtherVotes Paper
+This repository holds the paper for the EtherVotes project.
