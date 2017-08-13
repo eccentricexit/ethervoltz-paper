@@ -1,14 +1,15 @@
 EtherVotes: Blockchain para eleições sem fraudes
 
 Resumo/Abstract
+P1:Definir custos, centralização de poder, dificuldades de auditoria
+P2:Apresentar EtherVotes como possível solução para o problema
 
 1 Introdução
  P1: Apresentar dados custos elevados das eleições com urnas DRE e dificuldades de auditorias de fraude devido a centralização do poder
- P2: Detalhar que preço de uma urna brasileira sem impressao de voto e como ele se compara com o de um raspberrypi + perifericos
+ P2: Detalhar que preço de uma urna brasileira sem impressao de voto
  P3: Apresentar dificuldades financeiras do uso bases de dados comuns devido a vulnerabilidade a ataques DDoS, ataques internos.
- P4: Apresentar ethervotes como proposta para barateamento das eleições através de uma aplicação distribuida, a transformação do voto em uma criptomoeda infracionável e um minicomputador (como o raspberrypi) como urna.
-
-2 Eleições opacas (Problema)
+ P4: Apresentar ethervotes como proposta para barateamento das eleições através de uma aplicação distribuida, a transformação do voto em uma criptomoeda infracionável e um minicomputador (como o raspberrypi) como interface com a urna.
+2 Eleições opacas (Motivação/Problema)
  P1: Apresentar altos custos (dinheiro e democracia) e falta de transparência no processo atual das eleiçẽs brasileiras.
  2.1 Eleições de primera geração e seus custos
   P1: Apresentar quantos países utilizam a urna DRE sem vice e a opinião internacional sobre ela.
@@ -23,7 +24,7 @@ Resumo/Abstract
  P2: Apresentar problemas de auditabilidade de soluções dependentes de software
 3 EtherVotes (Solução)
  P1: Descrever que os objetivos da proposta são delegar a responsabilidade da integridade e disponibilidade dos votos à EVM
- 3.1 Técnica
+ 3.1 Arquitetura e Metodologia
   P1: Apresentar problemas de soluções baseadas apenas em blockchain (tempo de transação, limitações da evm)
   P2: Apresentar canais de estado (Rede raiden) como solução
   P3: Concluir com a criação de VoteToken.sol e o procedimento de transferência de tokens para carteiras de candidatos.
@@ -41,17 +42,17 @@ Resumo/Abstract
  3.4 Auditorias
   P1: Descrever processo de auditoria de uma única urna no ethervotes. 
  	1-Solicitação de todas as boletas com a chave pública utilizada na urna a ser auditada (Ainda envolve o TRE)
+	  P1: Explicar que não há necessidade de solicitar acesso a urnas, ou código fonte.
 	2-Solicitar um histórico de todas as transações realizadas por aquela chave pública à maquina virtual ethereum (não envolve o TSE)
-	3-
+          P1: Explicar que o estado não tem controle sobre os dados digitalizados das urnas.
+	3-Comparar boletas entregues pelo TRE com as transações registradas no blockchain.
 4 Conclusão
- 4.1 Segurança do frontend
-  P1: Apresentar dependencia da segurança do computador que recebe o frontend.
- 4.2 Escalabilidade
-  P1: Apresentar problemas de custo e escalabilidade de soluções via blockchain
-  P2: Apresentar possível solução atravez da rede Rainden
+  P1: Celeridade e Transparência nas auditorias
+  P2: Decentralização do poder
+  P3: Barateamento das eleições
 
 5 Experimentos
-  P1: Apresentar resultados da construção e repositório no github(?)
+  P1: Apresentar prova de conceito construida e resultados
 
 7 Referências
 
