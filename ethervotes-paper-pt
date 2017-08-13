@@ -1,8 +1,15 @@
 EtherVotes: Blockchain para eleições sem fraudes
 
 Resumo/Abstract
-P1:Definir custos, centralização de poder, dificuldades de auditoria
-P2:Apresentar EtherVotes como possível solução para o problema
+Os problemas segurança de processos eleitorais dependentes de software serviram como combustível para uma série de avanços tecnologicos para garantir a segurança e detectabilidade de fraudes em processos eleitorais e ao mesmo tempo prover celeridade na apuração de votos. Estes avanços acarretaram e um aumento de complexidade dos processos e sistemas, que por consequencia dificultam auditorias e centralizam o poder de condução das mesmas no administrador. {P1: Definir custos, centralização de poder, dificuldades de auditoria}
+
+A utilização de sistemas cliente-servidor também não são soluções viáveis para a condução de processos eleitorais visto que oferecem pontos de falha vulneraveis a ataques DDoS e dependem da confiança nos envolvidos no processo para adminstração das chaves. {P2: Apresentar problema de soluções com servidores}
+
+Este artigo apresenta uma prova de conceito de sistema eleitoral chamado EtherVoltz (pronunciado Íter vÔltz) que não depende de software e faz uso de um computador global decentralizado (1) e distribuído (2) para baratear os processos de eleição e auditoria. Esta proposta também remove do administrador a tarefa de controlar os registros digitais dos votos após a votação, visto que estes estão registrados no blockchain de uma rede "peer-to-peer", sobrando ao mesmo apenas a tarefa do gerenciamento dos votos impressos para posteriores auditorias. {P3: Apresentar EtherVotes como possível solução para o problema}
+
+Nota rodapé 1: No sentido que nenhuma instituição, país, ou pessoa possui poder de controle sobre ele.
+Nota rodapé 2: No sentido de que utiliza rede p2p como arquitetura ao invés de cliente-servidor e portanto é resistente a ataques de recusa de serviço.
+
 
 1 Introdução
  P1: Apresentar dados custos elevados das eleições com urnas DRE e dificuldades de auditorias de fraude devido a centralização do poder
