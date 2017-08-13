@@ -1,0 +1,57 @@
+EtherVotes: Blockchain para eleições sem fraudes
+
+Resumo/Abstract
+
+1 Introdução
+ P1: Apresentar dados custos elevados das eleições com urnas DRE e dificuldades de auditorias de fraude devido a centralização do poder
+ P2: Detalhar que preço de uma urna brasileira sem impressao de voto e como ele se compara com o de um raspberrypi + perifericos
+ P3: Apresentar dificuldades financeiras do uso bases de dados comuns devido a vulnerabilidade a ataques DDoS, ataques internos.
+ P4: Apresentar ethervotes como proposta para barateamento das eleições através de uma aplicação distribuida, a transformação do voto em uma criptomoeda infracionável e um minicomputador (como o raspberrypi) como urna.
+
+2 Eleições opacas (Problema)
+ P1: Apresentar altos custos (dinheiro e democracia) e falta de transparência no processo atual das eleiçẽs brasileiras.
+ 2.1 Eleições de primera geração e seus custos
+  P1: Apresentar quantos países utilizam a urna DRE sem vice e a opinião internacional sobre ela.
+  P2: Apresentar o caso Marília, o caso Itajaí, o caso Diadema e o caso Alagoas
+  P3: Apresentar custo de urnas DRE sem e com VICE
+  P4: Concluir introduzindo a necessidade de VICE e conceito de independência de software, e proposta do trabalho para baratear e aumentar a segurança de sistemas  eleitorais com VICE ao mover a urna à máquina virtual ethereum.
+3 Informações contextuais
+ P1: Apresentar a maquina virtual ethereum como um computador global e a linguagem de programação solidity
+ P2: Apresentar desafios de escalabilidade atuais e o conceito de canais de estado
+4 Revisão do estado da arte
+ P1: Apresentar desafios de escalabilidade do blockchain citando e-vox e follow-my-vote
+ P2: Apresentar problemas de auditabilidade de soluções dependentes de software
+3 EtherVotes (Solução)
+ P1: Descrever que os objetivos da proposta são delegar a responsabilidade da integridade e disponibilidade dos votos à EVM
+ 3.1 Técnica
+  P1: Apresentar problemas de soluções baseadas apenas em blockchain (tempo de transação, limitações da evm)
+  P2: Apresentar canais de estado (Rede raiden) como solução
+  P3: Concluir com a criação de VoteToken.sol e o procedimento de transferência de tokens para carteiras de candidatos.
+ 3.2 VoteToken
+  P1: Descrever o procedimento da emissão de moedas fazendo um paralelo ao bitcoin.
+  P2: Notar sobre a vantagem de segurança contra ataques internos, já que só possuem poder de voto carteiras que receberam votetokens que o STE emitiu. 
+ 3.2 Controle de carteiras
+  P1: Descrever o contrato MachineRegistry.sol como solução para exposição e controle de carteiras (chaves públicas)
+  P2: Descrever efeito da impressão da carteira da urna nas boletas contra fraudes
+ 3.3 Após a eleição
+  P1: Descrever o que ocorre após as eleições no modelo antigo. Forças armadas, logística e transporte das urnas e boletas para apuração dos votos, perigo de fraude através da destruição de evidências (destruir urnas e boletas não favoráveis).
+  P2: Descrever que no ethervotes os votos estão registrados no blockchain, por isso não há necessidade de segurança no transporte do equipamento eletrônico. Na verdade, o mesmo poderiam ou deveriam ser destruídas para evitar o vazamento de chaves privadas.
+  P3: Descrever o processo de apuração atual e autoridade responsável.
+  P4: Descrever o processo de apuração no ethervotes (getBalance)
+ 3.4 Auditorias
+  P1: Descrever processo de auditoria de uma única urna no ethervotes. 
+ 	1-Solicitação de todas as boletas com a chave pública utilizada na urna a ser auditada (Ainda envolve o TRE)
+	2-Solicitar um histórico de todas as transações realizadas por aquela chave pública à maquina virtual ethereum (não envolve o TSE)
+	3-
+4 Conclusão
+ 4.1 Segurança do frontend
+  P1: Apresentar dependencia da segurança do computador que recebe o frontend.
+ 4.2 Escalabilidade
+  P1: Apresentar problemas de custo e escalabilidade de soluções via blockchain
+  P2: Apresentar possível solução atravez da rede Rainden
+
+5 Experimentos
+  P1: Apresentar resultados da construção e repositório no github(?)
+
+7 Referências
+
