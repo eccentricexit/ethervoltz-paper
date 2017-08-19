@@ -38,19 +38,24 @@ Após o período eleitoral, caso um cidadão queira auditar o resultados das ele
 
 ###### P4: Apresentar casos relevantes
 O problema deste tipo de centralização de poderes fica evidente no Brasil, alguns casos bem documentados são brevemente listados a seguir:
-1. **O Caso Diadema, SP - 2000**: Foram negados a todos os partidos que solicitaram o acesso aos registros digitais dos votos realizados nas urnas eletrôncias. Somente 9 meses após a eleição os partidos obtiveram acesso, não ao registros dos votos, mas aos Arquivos de LOG das urnas que apontaram que **todas** as urnas haviam sido carregadas **fora** da cerimônia oficial de carga e lacramento das urnas.[1]
-2. **Assinaturas Divergentes - 2002 e 2008**: Nas eleições de 2º Turno de 2002 e 2008, foram detectadas durante verificação dos arquivos carregados nas urnas eletrônicas, a presença de um conjunto de arquivos com resumos digitais diferentes das publicadas nas respectivas cerimônias oficiais de lacramento dos sistemas. A providência tomada pelo administrador frente a estas descobertas, foi a de publicar novas Tabelas de Hash, calculadas **a portas fechadas e fora de uma cerimônia oficial**. A perícia das urnas foi indeferida e as Tabelas de Hash originais que demonstravam a impropriedade, foram removidas do local.[2]
-3. **O Caso Marília, SP - 2004**: Em auditoria, os Arquivos de Espelhos de Boletins de Urna da 400º Zona Eleitoral indicavam muitas seções eleitorais tiveram seus reultados recebidos para apuração **antes** do início da votação. Dois processos judiciais foram iniciados decorrentes destas contatações, ambos encerraram em 2009 sem julgamento final.[3]
+1. **O Caso Marília, SP - 2004**: Em auditoria, os Arquivos de Espelhos de Boletins de Urna da 400º Zona Eleitoral indicavam muitas seções eleitorais tiveram seus reultados recebidos para apuração **antes** do início da votação. Dois processos judiciais foram iniciados decorrentes destas contatações, ambos encerraram em 2009 sem julgamento final.[3]
+
+2. **O Caso Itajaí, SC - 2008**: Foi constatada burla intencional na cerimônia de carga e lacração das urnas em que nenhuma urna preparada para a votação passou pelo teste obrigatório prescrito pelo Art. 32 da Res. TSE 22.712/08. Um caso foi o da 97ª Zona Eleitoral onde a urna da seção 236 que foi sorteada para o teste obrigatório **foi substituída por outra** na hora do teste, preparada exclusivamente para este fim. A utilizada para o teste foi posteriormente colocada à parte e recarregada, procedimento que destruiu eventuais provas nela gravadas.
+
+3. **O Caso Diadema, SP - 2000**: Foram negados a todos os partidos que solicitaram o acesso aos registros digitais dos votos realizados nas urnas eletrôncias. Somente 9 meses após a eleição os partidos obtiveram acesso, não ao registros dos votos, mas aos Arquivos de LOG das urnas que apontaram que **todas** as urnas haviam sido carregadas **fora** da cerimônia oficial de carga e lacramento das urnas.[1]
+
 4. **O Caso Alagoas - 2006**: Diversas irregularidades nos arquivos gerados pelas urnas foram detectadas por auditores externos [4]. Frente as evidências, o administrador negou acesso aos arquivos solicitados pelos auditores e transferiu ao requerente uma cobrança antecipada no valor de R$ 2 milhões para que fosse desenvolvida uma perícia das urnas. Diante do não pagamento proibitivo, o requerente foi multado e condenado por litigância de má-fe. Mesmo tendo apresentado provas de inconsistência no funcionamento das urnas, a perícia das mesmas não foi permitida.[5]
 
 
+5. **Assinaturas Divergentes - 2002 e 2008**: Nas eleições de 2º Turno de 2002 e 2008, foram detectadas durante verificação dos arquivos carregados nas urnas eletrônicas, a presença de um conjunto de arquivos com resumos digitais diferentes das publicadas nas respectivas cerimônias oficiais de lacramento dos sistemas. A providência tomada pelo administrador frente a estas descobertas, foi a de publicar novas Tabelas de Hash, calculadas **a portas fechadas e fora de uma cerimônia oficial**. A perícia das urnas foi indeferida e as Tabelas de Hash originais que demonstravam a impropriedade, foram removidas do local.[2]
+
+
+
 ###### P5: Apresentar EtherVoltz como uma solução para estes problemas
-###### P6: Detalhar a natureza de resistencia a ataques DDoS do projeto
-###### P7: Detalhar as vantagens de transparência devido a natureza imutável do blockchain e resistência a ataques internos
-###### P8: Detalhar as vantagens de remover do trt a necessidade gerenciar a base de dados
-
-
-
+O núcleo do projeto EtherVotlz propoem a utilização do _blockchain_ _Ethereum_ como o _backend_ dos registros digitais dos votos. Embora algumas vantagens da estratégia estejam listadas abaixo, mais detalhes serão apresentados na Seção 3 deste documento.
+1. Distribuição: Diferente de sistemas que utilizam servidores comuns, aplicações que executam na máquina virtual _Ethereum_ são resistentes a ataques de negação de serviço distribuidos.
+2. Decentralização: Como a máquina virtual não possui um dono ou entidade responsável por sua administração, nenhuma instituição ou pessoa possui poder de censurar ou de alguma forma impedir que aplicações construídas na plataforma se mantenham em execução.
+3. Todas atualizações na base de dados são registradas permanentemente no blockchain  estão disponíveis para auditoria por qualquer pessoa, a qualquer momento em qualquer lugar.
 
 ## 2. Conceitos e Definições
 P1: Explicar o motivo desta seção
