@@ -160,6 +160,7 @@ A estratégia envolve também o uso de um registro físico do voto ou VICE que f
 Portanto, em cada voto são produzidas duas provas que se referenciam: Uma é o VICE que fica sobre controle do administrador do processo. A outra é o registro digital e que fica salvo no blockchain e sobre qual o administrador não possui controle. 
   
 ![](https://raw.githubusercontent.com/mtsalenc/ethervoltz-paper/master/images/architecture.png) 
+
 Na figura, as imagens rotuladas pelas letras A, B, C, D, E e F representam respectivamente: 
 - Um computador conectado à rede Ethereum. 
 - A rede Ethereum composta por milhares de nós ao redor do mundo. 
