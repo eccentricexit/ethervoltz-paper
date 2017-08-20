@@ -3,7 +3,6 @@
 
 
 
-
 ## Resumo		
 ###### [P1: Introduzir os avanços de segurança e velocidade em processos eleitorais]
 Os avanços tecnológicos nos setores de criptografia e segurança da informação permitiram o desenvolvimento de sistemas eleitorais que oferecem celeridade na apuração de registros digitais de votos. 
@@ -37,14 +36,15 @@ Uma solução trivial porém falha que alguém pode pensar, é a utilização de
 Após o período eleitoral, caso um cidadão queira auditar o resultados das eleições ele precisa interagir com o administrador do processo eleitoral para ter acesso os registros digitais, aos equipamentos e aos registros independentes de software (caso o administrador tenha optado por sistemas que utilizem VICE). Cabe ao administrador decidir se ele tem ou não permissão para realizar a auditoria e quais são condições para a realização da mesma.
 
 ###### P4: Apresentar casos relevantes
-O problema deste tipo de centralização de poderes fica evidente no Brasil, alguns casos bem documentados são brevemente listados a seguir:
+O problema deste tipo de centralização de poderes fica evidente no Brasil. Embora não seja objetivo deste documento discutir a importância do Princípio da Independência de Software em Sistemas Eleitorais, alguns casos bem documentados são brevemente listados a seguir:
 1. **O Caso Marília, SP - 2004**: Em auditoria, os Arquivos de Espelhos de Boletins de Urna da 400º Zona Eleitoral indicavam muitas seções eleitorais tiveram seus reultados recebidos para apuração **antes** do início da votação. Dois processos judiciais foram iniciados decorrentes destas contatações, ambos encerraram em 2009 sem julgamento final.[3]
 
-2. **O Caso Itajaí, SC - 2008**: Foi constatada burla intencional na cerimônia de carga e lacração das urnas em que nenhuma urna preparada para a votação passou pelo teste obrigatório prescrito pelo Art. 32 da Res. TSE 22.712/08. Um caso foi o da 97ª Zona Eleitoral onde a urna da seção 236 que foi sorteada para o teste obrigatório **foi substituída por outra** na hora do teste, preparada exclusivamente para este fim. A utilizada para o teste foi posteriormente colocada à parte e recarregada, procedimento que destruiu eventuais provas nela gravadas.
+2. **O Caso Itajaí, SC - 2008**: Foi constatada burla intencional na cerimônia de carga e lacração das urnas em que nenhuma urna preparada para a votação passou pelo teste obrigatório prescrito pelo Art. 32 da Res. TSE 22.712/08. Um caso foi o da 97ª Zona Eleitoral onde a urna da seção 236 que foi sorteada para o teste obrigatório **foi substituída por outra** na hora do teste, preparada exclusivamente para este fim. A utilizada para o teste foi posteriormente colocada à parte e recarregada, procedimento que destruiu eventuais provas nela gravadas.[7]
 
 3. **O Caso Diadema, SP - 2000**: Foram negados a todos os partidos que solicitaram o acesso aos registros digitais dos votos realizados nas urnas eletrôncias. Somente 9 meses após a eleição os partidos obtiveram acesso, não ao registros dos votos, mas aos Arquivos de LOG das urnas que apontaram que **todas** as urnas haviam sido carregadas **fora** da cerimônia oficial de carga e lacramento das urnas.[1]
 
-4. **O Caso Alagoas - 2006**: Diversas irregularidades nos arquivos gerados pelas urnas foram detectadas por auditores externos [4]. Frente as evidências, o administrador negou acesso aos arquivos solicitados pelos auditores e transferiu ao requerente uma cobrança antecipada no valor de R$ 2 milhões para que fosse desenvolvida uma perícia das urnas. Diante do não pagamento proibitivo, o requerente foi multado e condenado por litigância de má-fe. Mesmo tendo apresentado provas de inconsistência no funcionamento das urnas, a perícia das mesmas não foi permitida.[5]
+4. **O Caso Alagoas - 2006**: Diversas irregularidades nos arquivos gerados pelas urnas foram detectadas por auditores externos [4]. Frente as evidências, o administrador negou acesso aos arquivos solicitados pelos auditores e transferiu ao requerente uma cobrança antecipada no valor de R$ 2 milhões para que fosse desenvolvida uma perícia das urnas. Diante do não pagamento do valor proibitivo, o requerente foi multado e condenado por litigância de má-fe. 
+Mesmo tendo apresentado provas de inconsistência no funcionamento das urnas, a perícia das mesmas não foi permitida.[5]
 
 
 5. **Assinaturas Divergentes - 2002 e 2008**: Nas eleições de 2º Turno de 2002 e 2008, foram detectadas durante verificação dos arquivos carregados nas urnas eletrônicas, a presença de um conjunto de arquivos com resumos digitais diferentes das publicadas nas respectivas cerimônias oficiais de lacramento dos sistemas. A providência tomada pelo administrador frente a estas descobertas, foi a de publicar novas Tabelas de Hash, calculadas **a portas fechadas e fora de uma cerimônia oficial**. A perícia das urnas foi indeferida e as Tabelas de Hash originais que demonstravam a impropriedade, foram removidas do local.[2]
@@ -70,7 +70,7 @@ Um sistema eleitoral é independente do software se uma modificação ou erro n�
 O VICE ou Voto Impresso Conferível Pelo Eleitor é um documento em papel que é apresentado ao eleitor no momento da votação. O VICE é apresentado para que ele possa confirmar visualmente o voto mas ao qual ele não tem contato físico (e nem leva para casa). Os termos VICE e Registro de Voto Físico são utilizados de forma intercambeável neste documento e significam a mesma coisa.
 
 ### 2.3 Livro Razão Público
-Livro razão é o nome dado a um documento que agrupa modificações sequênciais do estado de alguma informação. _Blockchains_ são comumente comparados a livros razão públicos, pois são uma sequência de alterações de estado ordenadas uma após a outra e cujas alterações dependem necessariamente do estado anterior:
+Livro razão é o nome dado a um documento que agrupa modificações ordenadas do estado de alguma informação. _Blockchains_ são comumente comparados a livros razão públicos, pois são uma sequência de alterações de estado ordenadas uma após a outra e cujas alterações dependem necessariamente do estado anterior:
 
 ID | Remetente | Operação | Parâmetros | Destinatário
 --- | --- | --- | --- | ---
@@ -88,7 +88,7 @@ O estado da aplicação é o conjunto de todas as informações e variáveis da 
 
 ### 2.5 Transação 
 Uma transação é uma mensagem enviada à aplicação e que inclui dados sobre  determinada operação que o remetente deseja executar. As transações discutidas nestes documento possuem, além de outras informações:
-- O endereço do destinatário. Na maioria dos casos aqui discutidos, o destinatário é a aplicação ethervotes. O endereço também é a chave pública do destinatário.
+- O endereço do destinatário. Na maioria dos casos aqui discutidos, o destinatário é a aplicação EtherVoltz. O endereço também é a chave pública do destinatário.
 - Uma assinatura criptográfica que comprova o remetente da transação.
 - Informações sobre a operação a ser realizada, como o nome da operação e parâmetros.
 
@@ -124,40 +124,82 @@ Outra característica importante é a de que, em um sentido técnico, cada progr
 Programas no computador mundial, executam exatamente como programados. A implicação disto é de que um desenvolvedor pode escrever um programa que só pode receber requisição de certas pessoas, podendo inclusive revogar o direito do próprio criador do programa de interagir com ele para garantir transparência a terceiros. Este é um recurso utilizado no núcleo do projeto EtherVoltz em que o administrador do processo eleitoral revoga parte do próprio poder de interação com o programa para dar transparência e imutabilidade ao processo.
 
 ### 2.11 Contrato Inteligente, _Smart Contract_
-Em discussões no meio Ethereum e neste documento _smart contract_, contrato inteligente ou simplesmente contrato, pode ser visto como um programa que executa no computador mundial. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito na linguagem Solidity.
+Em discussões no meio Ethereum e neste documento, _smart contract_, contrato inteligente ou simplesmente contrato, pode ser visto como um programa que executa no computador mundial. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito na linguagem Solidity.
 
 Formalmente, são protocolos que funcionam como programas para regulamentar e verificar a execução de contratos sem a necessidade de intermediários para a garantia do mesmo.
 
-## 3. Confiabilidade e Transparência Através de um Livro-Razão Público
-P1: Descrever a estratégia do projeto mover os registros digitais para uma base de dados distribuída e decentralizada e seus efeitos
+### 2.12 Criptomoeda, Token, VoteToken
+Uma criptomoeda é um bem digital projetado para servir como meio de troca utilizando criptografia para assegurar transações e controlar a emissão de novas unidades da moeda.
+VoltToken é uma criptomoeda proposta e implementada na prova de conceito deste projeto, para servir como um meio do eleitor expressar sua intenção de voto.
+A palavra _Token_ é por vezes utilizada para se referir ao VoteToken para evidenciar que diferente de criptomoedas comuns, esta não pode ser transferida livremente de uma pessoa para outra.
 
-P2: Descrever a estratégia da utilização de uma criptomoeda como voto
+### 3 Estratégia
 
-P4: Descrever a estratégia de as chaves públicas das urnas em um contrato para rastreabilidade e auditoria das urnas
+A estratégia utilizada envolve transformar os votos de uma dada eleição em uma criptomoeda que existirá apenas para este fim. Um voto é portanto, a transferência de uma moeda pertencente a carteira associada a uma urna para o candidato.
+`Nota: o candidato não possui nenhum poder administrativo sobre a carteira que receberá os votos`
 
-P3: Descrever a consequência decentralizadora do uso do blockchain
+A regulamentação da transferência destas criptomoedas e o processo de emissão de novas unidades é definido através do código definido publicamente no contrato inteligente quando o sistema é criado.
 
-### 3.1 A Urna
+Após _deployment_ na máquina virtual, a regras não podem ser alterada por ninguém, mas todas as transferências de moedas e o código fonte do programa podem ser auditados por qualquer um a qualquer instante.
 
-P1: Descrever a urna como qualquer interface que comunique com um cliente ethereum (e.g. Metamask, Infura, Geth, Pyeth). Uma carteira e sua chave privada associada também deve ser fornecida, esta chave é sucetível a vazamento como em qualquer sistema de voto que envolve registros digitais criptografados, mas no ethervotes, diferente da urna de primeira geração brasileira, a detectabilidade de fraudes se torna possível porque elas produzem provas na forma de incoerências entre as evidências digitais salvas no blockchain e nos registros físicos.
+Na prova de conceito do projeto EtherVoltz, a moeda foi batizada de VoltToken e será discutida em mais detalhes na seção 3.4.1
 
-P2: Descrever que as urnas possuem  como identificador, a chave pública que ela utiliza para transferir os votetokens. Assim, as urnas e todos os votos emitidos por elas são rastreáveis no blockchain.
+### 4 O Caminho do Voto
+Esta seção apresenta uma explicação de alto nível de como uma eleição comum funciona sobre o sistema EtherVoltz. 
 
-P2: Descrever que a eleição possui uma janela de tempo para ocorrer, definido no blockchain. Nenhum voto acontece antes ou depois deste período.
-### 3.2 O Procedimento do Voto
+### 4.1 A Produção e Auditoria do Código Fonte
+Os requisitos que o contrato prova de conceito pretende atender estão listados a seguir:
+- A transferência de VoltTokens só pode ocorrer durante o período eleitoral.
+- Apenas endereços de carteiras registradas no contrato podem transferir VoltTokens.
+- Apenas endereços de carteiras que representam candidatos podem receber VoltTokens.
+- Todas as urnas e suas respectivas carteiras são identificadas através de suas chaves públicas e estão definidas no contrato inteligente.
+- O número total de moedas em circulação é definido no momento da criação do sistema.
+- Nenhuma nova unidade da moeda pode ser emitida após a criação do sistema.
+- Cada urna recebe precisamente o número de VoteTokens correspondente ao número de eleitores que devem votar naquela urna.
+- As regras anteriores são auditáveis por qualquer um através do código fonte do contrato disponibilizado pelo administrador.
 
-P1: Descrever o procedimento de voto aos olhos do eleitor
+Muito antes do período eleitoral, o administrador publica uma proposta do código fonte do contrato inteligente que será utilizado para regulamentar a emissão e controle de transferência das criptomoedas, para que o grande público possa propor melhorias e descobrir falhas.
 
-### 3.3 Após a Votação
+Após as melhorias serem implementadas, em cerimônia oficial, o administrador compila o código, envia o contrato à evm e publica o endereço do mesmo para que o público possa acompanhar auditar todas as mudanças de estado que ocorrerem no programa.
 
-P1: Descrever que após cada voto, a urna eletrônica pode ser destruída e os registros digitais estão seguros no blockchain.
+O administrador publica o código fonte do contrato inteligente para que qualquer auditor possa comparar o _byte code_ resultante da compilação, com o _byte code_ do contrato no endereço disponibilizado na cerimônia oficial.
 
-P2: Descrever que após o tempo estipulado no contrato, nenhum novo voto pode ser efetuado
+### 4.2 O Procedimento do Voto
+Do ponto de vista do eleitor, o voto ocorre da mesma forma que em uma urna de segunda geração comum, exceto que a impressão do VICE ocorre em duas etapas. 
 
-### 3.4 Auditoria
-P1: Descrever os que no sistema ethervotes, os registros de votos estão em dois lugares, nos registro físicos que são as boletas, e nos registros digitais, localizados no blockchain em milhares de computadores ao redor do mundo.
+A seguir são detalhados eventos relevantes que ocorrem desde o início do período eleitoral até o fim.
+1. O eleitor, após ser autorizado pelo mesário, digita o código do candidato.
+2. A impressora imprime o VICE que fica visível para que o eleitor possa conferir.
+3. Se os dados estão corretos o eleitor pressiona "confirma".
+4. A urna envia uma transação à aplicação na máquina virtual para transferir 1 VoteToken da carteira da urna para a carteira que representa o candidato.
+5. Após a confirmação da transação, a urna recebe um _hash_ que identifica unicamente este voto no blockchain.
+6. A impressora imprime este hash no VICE.
+7. O VICE é cortado e cai em uma caixa lacrada.
 
-#### 3.4.1 VoteTokens
+[Imagem com exemplo de VICE do sistema EtherVoltz]
+
+### 4.3 Pós-Voto
+Após o período eleitoral existem dois registros de cada voto contado. Um deles é o registro digital do voto que está gravado no blockchain da máquina virtual Ethereum. O outro é o voto impresso conferível pelo eleitor.
+
+Os registros digitais dos votos podem ser solicitados por qualquer pessoa a qualquer momento para auditoria e possuem as seguintes informações:
+- De qual urna o voto foi emitido.
+- Qual candidato recebeu o voto.
+- O hash que identifica unicamente esta transação no blockchain
+
+Já os registros físicos do voto, ficam sob controle do administrador da eleição e possuem as seguintes informações:
+- De qual urna o voto foi emitido.
+- Qual candidato recebeu o voto.
+- O hash que identifica unicamente esta transação no blockchain
+
+A apuração dos votos é instantânea e consiste em apenas solicitar ao computador mundial, o balanço das carteiras criadas para receberem os votos dos candidatos.
+
+### 4.4 Auditorias
+Os passos para uma auditoria simples de uma urna estão listados a seguir.
+1. O auditor solicita à maquina virtual uma lista com todas as transações realizadas pela urna em questão, passando a chave pública da urna.
+2. O auditor solicita ao administrador da eleição, a caixa contendo os votos impressos conferíveis pelo eleitor, da mesma urna.
+
+
+#### 5.1 VoltToken
 P0: Descrever que auditoria consiste em solicitar ao administrador das eleições, as boletas referentes a =determinada urna a ser auditada e solicitar à máquina virtual ethereum através de qualquer navegador de blocos, as transações realizadas pela identifica
 
 P1: Descrever que qualquer pessoa no planeta pode analizar o código utilizado para a emissão e gestão dos votetokens no blockcahin sem precisar pedir permissão do administrador. 
@@ -189,4 +231,6 @@ P2: Descrever que o uso de um blockchain atualmente em funcionamento tira do gov
 
 [5] 1º Relatório do Comitê Multidisciplinar Independente - pg 27.
 
-[6] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems
+[6] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems.
+
+[7] 1º Relatório do Comitê Multidisciplinar Independente - pg 34.
