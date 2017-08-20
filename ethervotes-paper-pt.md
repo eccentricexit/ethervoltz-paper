@@ -204,7 +204,13 @@ Um _hash_ impresso no VICE é considerado válido se:
 - O endereço da carteira do candidato que recebeu o voto for o mesmo que o impresso no VICE
 - O endereço do contrato da criptomoeda for o mesmo publicado na cerimônia oficial.
 
-## 4. Conclusão		
+## 4. Conclusão	
+EtherVoltz é uma proposta que visa decentralizar o processo eleitoral e de auditorias ao transferir a responsabilidade de gerenciar dos registros digitais de votos a um programa que executa em uma máquina virtual que não possui autoridade central, é imutável e resistente a censura. 
+
+Ao transformar o voto do eleitor em uma criptomoeda, o sistema imediatamente ganha todas as propriedades de segurança do protocolo de consenso e de disponibilidade da rede _peer-to-peer_ utilizado na plataforma. 
+
+Embora ainda exista a necessidade da emissão e controle dos VICE para garantir o Princípio da Independência de Software ao sistema, a separação do destino das duas provas produzidas no momento do voto dá aos eleitores poder de auditoria com limitada necessidade do envolvimento de intermediários.
+
 
 
 ## 5. Referências	
