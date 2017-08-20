@@ -16,7 +16,7 @@ Já estudos específicos de segurança para sistemas eleitorais, evidenciaram a 
 
 
 ###### [P3: Apresentar EtherVoltz como solução para a gerência dos registros digitais e seus beneficios]
-Este documento apresenta uma proposta de sistema eleitoral independente de software que remove do administrador a tarefa de garantir a disponibilidade e integridade dos registros digitais dos votos, além de garantir que qualquer pessoa tenha o poder de auditar esses registros, através de uma aplicação distribuida que funciona sobre um blockchain já em funcionamento.
+Este documento apresenta uma proposta de sistema eleitoral independente de software que remove do administrador a tarefa de garantir a disponibilidade, integridade e confiabilidade dos registros digitais dos votos, além de garantir que qualquer pessoa tenha o poder de auditar esses registros, através de uma aplicação distribuida que funciona sobre uma rede p2p que já está em funcioinamento e utiliza  a segurança garantida pela technologia blockchain.
 
 
 
@@ -99,6 +99,7 @@ Um bloco "b" é uma pacote contendo uma referência à um bloco anterior "d" e u
 ### 2.8 Blockchain
 Um blockchain é uma sequência de blocos "b" B=[b0,b1,b2,b3...] em que cada bloco referencia o bloco precedente e até o _bloco gênesis_ "b0". Um _blockchain_ é dito válido se cada bloco b pertencente a B for válido.
 Em discussões sobre desenvolvimento de aplicações distribuídas empoderadas por tecnologia blockchain - e em alguns trechos neste documento-, é comum se referir ao mesmo como um banco de dados distribuído, visto que existem copias dela armazenadas nos computadores dos milhares de nós e minaradores espalhados pelo mundo.
+Neste documento o termo blockchain será utilizado para se refereir especificamente ao blockchain utilizado na máquina virtual Ethereum, mas vale lembrar que esta estrutura de dados também é utilizada em outros sistemas como Bitcoin e Litecoin.
 
 ### 2.9 Algorítmo ou Protocolo de Consenso
 Um algorítmo ou protocolo de consenso, no âmbito de sistemas distribuidos é um processo pelo qual uma rede de computadores entra em acordo de qual é o estado atual do sistema. 
@@ -108,12 +109,21 @@ No Bitcoin, o protocolo de consenso utilizado é chamado de "Prova de Trabalho" 
 Neste documento, "Nós" são computadores conectados à rede ethereum através de algum cliente como _geth_ ou _pyeth_ e que possui uma cópia completa ou parcial do blockchain. O termo "nó completo" é utilizado para explicitar que o nó em questão possui uma copia do blockchain completa e válida, já que nós "leves" existem e estão em desenvolvimento para garantir o acesso de dispositivos sem recursos ao blockchain.
 
 
-### 2.9 P1: EVM / Maquina virtual Ethereum como um computador global de natureza distribuida, decentralizada e imutável.
+### 2.9 Maquina virtual Ethereum, EVM, Computador Mundial
+A máquina virtual Ethereum ou EVM (do inglês Ethereum Virtual Machine) é em um sentido técnico um computador mundial que pode ser utilizado e programado por qualquer um. Possui apenas um processador e um _thread_ para executar programas, mas tanta memória quanto for necessária.
 
-### 2.9 P1: Smart Contract - Apresentar o conceito de smart contracts e a linguagem de programação solidity	
+Qualquer pessoa pode escrever programas que podem executados por este computador, fazer upload deles à máquina virtual e fazer requisições ao programa para serem executadas. Por isto, a máquina virtual Ethereum é frequentemente referenciada como sendo um Computador Mundial.
 
-### 2.10 P1: Criptomoeda/token - Apresentar o conceito de criptomoeda
+O computador é formado por uma rede _peer-to-peer_ de computadores que dedicam hardware e eletricidade para executar estes programas e recebem em troca uma recompensa financeira para isto.
 
+Outra característica importante é a de que, em um sentido técnico, cada programa possui seu próprio armazenamento que persiste entre execuções. Enquanto houver demanda, a máquina virtual e todos os programas estarão disponíveis. A EVM não pode ser desligada.
+
+Programas no computador mundial, executam exatamente como programados. A implicação disto é de que um desenvolvedor pode escrever um programa que só pode receber requisição de certas pessoas, podendo inclusive revogar o direito do próprio criador do programa de interagir com ele para garantir transparência a terceiros. Este é um recurso utilizado no núcleo do projeto EtherVoltz em que o administrador do processo eleitoral revoga parte do próprio poder de interação com o programa para dar transparência e imutabilidade ao processo.
+
+### 2.9 Contrato Inteligente, _Smart Contract_
+Em discussões no meio Ethereum e neste documento _smart contract_, contrato inteligente ou simplesmente contrato, pode ser visto como um programa que executa no computador mundial. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito na linguagem Solidity.
+
+Formalmente, são protocolos que funcionam como programas para regulamentar e verificar a execução de contratos sem a necessidade de intermediários para a garantia do mesmo.
 
 ## 3. Confiabilidade e Transparência Através de um Livro-Razão Público
 P1: Descrever a estratégia do projeto mover os registros digitais para uma base de dados distribuída e decentralizada e seus efeitos
@@ -167,8 +177,13 @@ P2: Descrever que o uso de um blockchain atualmente em funcionamento tira do gov
 
 ## 5. Referências	
 [1] 1º Relatório do Comitê Multidisciplinar Independente - pg 24.
+
 [2] 1º Relatório do Comitê Multidisciplinar Independente - pg 25.
+
 [3] 1º Relatório do Comitê Multidisciplinar Independente - pg 27.
-[4] Fernandes, C.T. - Radiografia das Urnas Eleitorais. S. J. dos Campos: ITA, dezembro de 2006 - http://www.votoseguro.org/arquivos/AL06-laudoFerITA.zip
-[5] 1º Relatório do Comitê Multidisciplinar Independente - 
+
+[4] Fernandes, C.T. - Radiografia das Urnas Eleitorais. S. J. dos Campos: ITA, dezembro de 2006.
+
+[5] 1º Relatório do Comitê Multidisciplinar Independente - pg 27.
+
 [6] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems
