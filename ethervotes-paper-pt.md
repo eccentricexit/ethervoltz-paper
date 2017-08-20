@@ -155,13 +155,21 @@ Após _deployment_ na máquina virtual, a regras não podem ser alteradas por ni
 
 Na prova de conceito do projeto EtherVoltz, a criptomoeda foi batizada de VoltToken e será discutida em mais detalhes na seção 4.1.
 
-[Inserir imagem com a arquitetura do projeto EtherVoltz]
-
 A estratégia envolve também o uso de um registro físico do voto ou VICE que fica sobre posse do administrador do processo eleitoral. A diferença deste modelo de VICE aos modelos propostos nas urnas de primeira e segunda geração esta inclui o hash resultante da transferência do VoteToken. Detalhes sobre este modelo de VICE são discutidos na Seção 4.2.
 
 Portanto, em cada voto são produzidas duas provas que se referenciam. Uma é o VICE que fica sobre controle do administrador do processo e a outra é o registro digital e que **não** fica salvo no blockchain e sobre qual o administrador não possui controle.
 
-[Inserir imagem mostrando o caminho das provas produzidas]
+![](https://raw.githubusercontent.com/mtsalenc/ethervoltz-paper/master/images/architecture.png)
+Na figura, as imagens rotuladas pelas letras A,B,C,D,E e F representam respectivamente:
+- Uma computador conectado a rede Ethereum.
+- A rede Ethereum composta por milhares de nós ao redor do mundo.
+- Uma cópia do blockchain em nó na rede.
+- Uma impressora para imprimir o registro de voto físico.
+- Caixa lacrada para coleta dos VICE
+- Cofre para armazenamento dos VICE sob controle do administrador
+
+Note que de "A" saem duas setas, elas representam os destinos dos registros digitais e físicos respectivamente. A àrea demarcada por linha tracejada representa a base de dados decentralizada, isto é, a região do sistema sobre a qual nenhuma entidade central possui controle. Dados e programas que executam nesta região, são resistentes a censura e operam exatamente como definidos nos contratos.
+
 
 ## 4 O Caminho do Voto
 Esta seção apresenta uma explicação de alto nível de como uma eleição comum funciona sobre o sistema EtherVoltz. 
