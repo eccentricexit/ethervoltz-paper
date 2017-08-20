@@ -128,7 +128,7 @@ Em discussões no meio Ethereum e neste documento, _smart contract_, contrato in
   
 Formalmente, são protocolos que funcionam como programas para regulamentar e verificar a execução de contratos sem a necessidade de intermediários para a garantia do mesmo. 
   
-### 2.12 Criptomoeda, Token, VoteToken 
+### 2.12 Criptomoeda, Token, VoltToken 
 Uma criptomoeda é um bem digital projetado para servir como meio de troca utilizando criptografia para assegurar transações e controlar a emissão de novas unidades da moeda. 
   
 VoltToken é uma criptomoeda proposta e implementada na prova de conceito deste projeto, para servir como um meio do eleitor expressar sua intenção de voto. 
@@ -182,7 +182,7 @@ Os requisitos que o contrato inteligente utilizado da prova de conceito pretende
 - Todas as urnas e suas respectivas carteiras são identificadas através de suas chaves públicas e estão definidas no contrato inteligente. 
 - O número total de moedas em circulação é definido no momento da criação do sistema. 
 - Nenhuma nova unidade da moeda pode ser emitida após a criação do sistema. 
-- Cada urna recebe precisamente o número de VoteTokens correspondente ao número de eleitores que devem votar naquela urna. 
+- Cada urna recebe precisamente o número de VoltTokens correspondente ao número de eleitores que devem votar naquela urna. 
 - As regras anteriores são auditáveis por qualquer um através do código fonte do contrato disponibilizado pelo administrador. 
   
 Muito antes do período eleitoral, o administrador publica uma proposta do código fonte do contrato inteligente que será utilizado para regulamentar a emissão e controle de transferência das criptomoedas, para que o grande público possa propor melhorias e descobrir falhas. 
