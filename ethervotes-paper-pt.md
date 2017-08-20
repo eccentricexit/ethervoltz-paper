@@ -58,15 +58,57 @@ O núcleo do projeto EtherVotlz propoem a utilização do _blockchain_ _Ethereum
 3. Todas atualizações na base de dados são registradas permanentemente no blockchain  estão disponíveis para auditoria por qualquer pessoa, a qualquer momento em qualquer lugar.
 
 ## 2. Conceitos e Definições
-P1: Explicar o motivo desta seção
-### 2.1 P1: Princípio da independência de software
-### 2.2 P1: VICE/Boleta de urna
-### 2.3 P1: Conceito de estado
-### 2.4 P1: Criptografia assimétrica, chave pública, privada e o termo "carteira" utilizado neste documento
-### 2.5 P1: Conceito de transação
+
+###### P1: Explicar o motivo desta seção
+Para facilidar a explicação altamente abstrata do funcionamento da solução proposta, são definidas nesta seção, diversos termos utilizados ao longo do documento. Embora definidos brevemente aqui, o leitor se beneficiará se possuir conhecimento sobre os mecanismos envolvidas tanto em sistemas eleitorais quanto aspectos técnicos específicos do desenvolvimento de software e segurança da informação mas principalmente de tecnologias _blockchain_ como o Bitcoin e Ethereum.
+### 2.1 Princípio da Independência de Software em Sistemas Eleitorais
+Do mesmo autor da chave de assinatura digital RSA [6]: 
+```
+Um sistema eleitoral é independente do software se uma modificação ou erro não-detectado no seu software não pode causar uma modificação ou erro indetectável no resultado da apuração.
+```
+### 2.2 VICE 
+Voto Impresso Conferível Pelo Eleitor: É um documento em papel que é apresentado ao eleitor no momento da votação. O VICE é apresentado para que ele possa confirmar visualmente o voto mas ao qual ele não tem contato físico (e nem leva para casa). Os termos VICE e Registro de Voto Físico são utilizados de forma intercambeável e significam a mesma coisa.
+
+### 2.3 Livro razão Público
+Livro razão é o nome dado a um documento que agrupa dados que registram o estado atual de alguma razão. _Blockchains_ são comumente comparados a livros razão públicos, pois são uma sequência de alterações de estado ordenadas uma após a outra e cujas alterações dependem necessariamente do estado anterior:
+
+Remetente | Operação | Parâmetros | Destinatário
+--- | --- | --- | ---
+João | enviou | 3  reais | para  Alice
+Alice | enviou | 2  reais | para Carlos
+Carlos | enviou | 1 real | para João
+João | enviou | 1 real | para Alice
+
+No exemplo acima, Carlos só poderá enviar 1 real para João se tiver recebido 1 real ou mais anteriormente.
+
+### 2.4 Estado 
+O estado da aplicação é o conjunto de todas as informações e variáveis da aplicação em um determinado instante.
+
+### 2.5 Transação 
+Uma transação é uma mensagem enviada à aplicação que possui dados sobre uma determinada operação que o remetente deseja realizar.Transações discutidas netes documento possuem, além de outras informações:
+- O endereço do destinatário que também é sua chave pública. 
+- Uma assinatura criptográfica que comprova o remetente da transação.
+- Informações sobre a operação a ser realizada, como o nome da operação e parâmetros.
+
+Sempre que uma transação é confirmada, um _hash_  que identifica esta transação individualmente é gerado a partir do conjunto de informações contidas nela e na história do blockchain até o momento. Com este _hash_ é possível solicitar à máquina virtual informações sobre a transação. Este recurso é explorado no EtherVoltz para garantir a rastreabilidade das operações realizadas na aplicação durante uma auditoria.
 ### 2.6 P1: Conceito de bloco
-### 2.7 P1: Conceito de blockchain
-### 2.8 P1: EVM / Maquina virtual Ethereum como um computador global de natureza distribuida, decentralizada e imutável.
+Um bloco "b" é uma pacote contendo uma referência à um bloco anterior "d" e uma lista de transações T. A inclusão de um bloco no blockchain implica na atualização do estado, mas o bloco só é incluído se for considerado válido. Um bloco b é considerado válido se: 
+1. Todas as transações t pertencentes a T listadas nele são válidas.
+2. As condições impostas pelo protocolo de consenso são atingidas.
+
+### 2.8 Blockchain
+Um blockchain é uma sequência de blocos "b" B=[b0,b1,b2,b3...] em que cada bloco referencia o bloco precedente e até o _bloco gênesis_ "b0". Um _blockchain_ é dito válido se cada bloco b pertencente a B for válido.
+Em discussões sobre desenvolvimento de aplicações distribuídas empoderadas por tecnologia blockchain - e em alguns trechos neste documento-, é comum se referir ao mesmo como um banco de dados distribuído, visto que existem copias dela armazenadas nos computadores dos milhares de nós e minaradores espalhados pelo mundo.
+
+### 2.9 Algorítmo ou Protocolo de Consenso
+Um algorítmo ou protocolo de consenso, no âmbito de sistemas distribuidos é um processo pelo qual uma rede de computadores entra em acordo de qual é o estado atual do sistema. 
+No Bitcoin, o protocolo de consenso utilizado é chamado de "Prova de Trabalho" ou "_Proof of Work_" e é o que dá segurança ao sistema contra transações inválidas ao sistema. Na máquina virtual Ethereum, o protocolo de consenso dá garantia de que nenhum programa como o EtherVoltz terá seu estado atual modificado por um atacante.
+
+### 2.7 Nó Completo
+Neste documento, "Nós" são computadores conectados à rede ethereum através de algum cliente como _geth_ ou _pyeth_ e que possui uma cópia completa ou parcial do blockchain. O termo "nó completo" é utilizado para explicitar que o nó em questão possui uma copia do blockchain completa e válida, já que nós "leves" existem e estão em desenvolvimento para garantir o acesso de dispositivos sem recursos ao blockchain.
+
+
+### 2.9 P1: EVM / Maquina virtual Ethereum como um computador global de natureza distribuida, decentralizada e imutável.
 ### 2.9 P1: Smart Contract - Apresentar o conceito de smart contracts e a linguagem de programação solidity	
 ### 2.10 P1: Criptomoeda/token - Apresentar o conceito de criptomoeda
 
@@ -117,3 +159,4 @@ P2: Descrever que o uso de um blockchain atualmente em funcionamento tira do gov
 [4] Fernandes, C.T. - Radiografia das Urnas Eleitorais. S. J. dos Campos: ITA, dezembro de 2006 -
 [5] 1º Relatório do Comitê Multidisciplinar Independente - pg 27.
 http://www.votoseguro.org/arquivos/AL06-laudoFerITA.zip
+[6] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems
