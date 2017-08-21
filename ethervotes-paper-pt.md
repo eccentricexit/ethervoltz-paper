@@ -204,7 +204,7 @@ A seguir são detalhados eventos relevantes que ocorrem durante a emissão de um
 6. A impressora imprime este hash no VICE. 
 7. O VICE é cortado e cai em uma caixa lacrada. 
   
-[Imagem com exemplo de VICE do sistema EtherVoltz] 
+![](https://raw.githubusercontent.com/mtsalenc/ethervoltz-paper/master/images/VICE.png)
   
 ### 4.3 Pós-Voto 
 Após o período eleitoral existem dois registros de cada voto contado. Um deles é o registro digital do voto que está gravado no blockchain da máquina virtual Ethereum. O outro é o voto impresso conferível pelo eleitor. 
