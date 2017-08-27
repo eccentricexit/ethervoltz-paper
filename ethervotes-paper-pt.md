@@ -1,25 +1,15 @@
-# EtherVoltz: Blockchain Para Eleições Auditáveis 
+# Tecnologia EtherVoltz Para Eleições Auditáveis
 --- 
   
   
   
 ## Resumo         
-Os avanços tecnológicos nos setores de criptografia e segurança da informação permitiram o desenvolvimento de sistemas eleitorais que oferecem celeridade na apuração de registros digitais de votos.  
-Já estudos específicos de segurança para sistemas eleitorais, evidenciaram a necessidade de que sejam independentes de software para garantir a produção de provas em caso de fraude. 
-  
-  
-  
-A gerência destes sistemas segue crescendo em complexidade, mas principalmente em custos. Custos não só na dimensão financeira, mas também na dimensão de transparência do processo, visto que requerem progressivamente a centralização de poderes nas mãos do administrador. 
-  
-  
-Este documento apresenta uma proposta de sistema eleitoral independente de software que remove do administrador a tarefa de garantir a disponibilidade, integridade e confiabilidade dos registros digitais dos votos. 
-  
-A estratégia é a utilização de um computador mundial formado por uma rede _peer-to-peer_ e seu blockchain que já está em funcionamento, como plataforma de hospedagem de uma aplicação distribuída. Esta estratégia garante que os registros digitais e o código fonte do contrato inteligente que gerou a aplicação, estejam disponíveis para qualquer cidadão auditar.  
+Este artigo apresenta uma proposta de sistema eleitoral independente de software que remove do administrador a responsabilidade de garantir a disponibilidade, integridade e confiabilidade dos registros digitais dos votos. A metodologia adotada inclui pesquisa bibliográfica, análise de problemas no sistema eleitoral brasileiro w a construção de uma prova de conceito. A estratégia utilizada para alcançar os objetivos envolve a construção de uma aplicação distribuída empoderada por tecnologia blockchain e a infraestrutura formada pelos milhares de nós da rede Ethereum.
   
   
 ## 1. Introdução     
   
-Em sistemas eleitorais de primeira, segunda e terceira geração, os registros digitais dos votos ficam salvos na memória dos equipamentos que precisam ser levados dos locais de votação de volta para as centrais para que ocorra a apuração dos votos. Além dos custos envolvidos para garantir que estes equipamentos não sejam alterados ou destruídos durante o transporte, o administrador também precisa guardar estes registros após a apuração de votos para posteriores auditorias. 
+Em sistemas eleitorais e primeira, segunda e terceira geração, os registros digitais dos votos ficam salvos na memória dos equipamentos que precisam ser levados dos locais de votação de volta para as centrais para que ocorra a apuração dos votos. Além dos custos envolvidos para garantir que estes equipamentos não sejam alterados ou destruídos durante o transporte, o administrador também precisa guardar estes registros após a apuração de votos para posteriores auditorias. 
   
   
 Uma solução trivial que alguém pode propor, é a utilização de um sistema cliente-servidor para a gerência destes registros. Entretanto, sistemas que utilizam esta arquitetura apresentam falhas que podem aumentar o custo das eleições significativamente e que introduzem novos pontos de falha ao sistema: 
@@ -58,7 +48,7 @@ Este projeto propõe a utilização do _blockchain_ _Ethereum_ como o _backend_ 
 Para facilidar a explicação altamente abstrata do funcionamento da solução proposta, são definidas nesta seção diversos termos utilizados ao longo do documento. Embora definidos brevemente aqui, o leitor se beneficiará se possuir conhecimento sobre os mecanismos envolvidas em sistemas eleitorais, desenvolvimento de software e criptografia. O Leitor se beneficiará principalmente se possuir conhecimento sobre o funcionamento de _blockchains_ como o Bitcoin e Ethereum. 
   
 ### 2.1 Princípio da Independência de Software em Sistemas Eleitorais 
-A tradução da definição apresentada por um dos autores da chave de assinatura digital RSA [6]:  
+A tradução da definição apresentada pelo autor do termo, que é também um dos autores da chave de assinatura digital RSA [6]:  
   
 > Um sistema eleitoral é independente do software se uma modificação ou erro não-detectado no seu software não pode causar uma modificação ou erro indetectável no resultado da apuração. 
   
@@ -80,40 +70,32 @@ ID | Remetente | Operação | Parâmetros | Destinatário
 No exemplo acima, a transação número 3927 só será incluída no livro razão se Carlos possuir 1 real ou mais. 
   
 ### 2.4 Estado  
-O estado da aplicação é o conjunto de todas as informações e variáveis da aplicação em um determinado instante. 
+O estado da aplicação é o conjunto de todas as informações e variáveis da aplicação em um determinado instante e que um sistema deve rastrear.[9] [13] Em sistemas mais simples isto pode ser apenas o balanço de contas e em sistemas mais complexos, estruturas de dados que fazem parte da aplicação.
   
 ### 2.5 Transação  
 Uma transação é uma mensagem enviada à aplicação e que inclui dados sobre determinada operação que o remetente deseja executar. As transações discutidas neste documento possuem, além de outras informações: 
 - O endereço do destinatário. Na maioria dos casos aqui discutidos, o destinatário é a aplicação EtherVoltz. O endereço também é a chave pública do destinatário. 
 - Uma assinatura criptográfica que comprova o remetente da transação. 
-- Informações sobre a operação a ser realizada, como o nome da operação e parâmetros. 
+- Informações sobre a operação a ser realizada, como o nome da operação e parâmetros. [8] [9] [13]
   
 Sempre que uma transação é confirmada, um _hash_  que identifica esta transação individualmente é gerado a partir do conjunto de informações contidas nela e na história do blockchain até o momento. Com este _hash_ é possível solicitar à EVM informações sobre a transação. Este recurso é explorado no EtherVoltz para garantir a rastreabilidade das operações realizadas na aplicação durante uma auditoria. 
   
 ### 2.6 Bloco 
-Um bloco "b" é um pacote contendo uma referência à um bloco anterior "d" e uma lista de transações T. A inclusão de um bloco no blockchain implica na atualização do estado, mas o bloco só é incluído se for considerado válido. Um bloco b é considerado válido se:  
+Um bloco "b" é um pacote de dados contendo uma lista de transações T, também uma referência à um bloco anterior "d" e opcionalmente, mais informações. [9] [13] A inclusão de um bloco no blockchain implica na atualização do estado, mas o bloco só é incluído se for considerado válido. [8] [14] Um bloco b é considerado válido se:  
 1. Todas as transações t pertencentes a T listadas nele são válidas. 
 3. O bloco "d" ao qual ele faz referência é válido. 
-2. As condições impostas pelo protocolo de consenso são atingidas. 
-  
+2. As condições impostas pelo protocolo de consenso são atingidas.
+
 ### 2.7 Blockchain 
 Um blockchain B=[b0,b1,b2,b3...] é uma sequência de blocos bn em que cada bloco faz referência ao bloco precedente até o bloco gênesis "b0". Um _blockchain_ é dito válido se cada bloco b pertencente a B for válido. 
 Em discussões sobre desenvolvimento de aplicações distribuídas empoderadas por tecnologia blockchain - e em alguns trechos neste documento-, é comum se referir ao mesmo como um banco de dados distribuído, visto que existem copias dela armazenadas nos computadores dos milhares de nós e mineradores espalhados pelo mundo. 
-Neste documento o termo blockchain será utilizado para se referir especificamente ao blockchain utilizado na máquina virtual Ethereum, mas vale lembrar que esta estrutura de dados também é utilizada em outros sistemas como Bitcoin e Litecoin. 
-  
-### 2.8 Algoritmo ou Protocolo de Consenso 
-Um algoritmo ou protocolo de consenso, no âmbito de sistemas distribuídos é um processo pelo qual uma rede de computadores entra em acordo sobre qual é o estado atual do sistema.  
-  
-No Bitcoin, o protocolo de consenso utilizado é chamado de Prova de Trabalho ou _Proof of Work_ e é o que dá segurança ao sistema contra transações inválidas. É o que impede que novas moedas sejam produzidas ou destruídas no sistema.  
-  
-Na máquina virtual Ethereum, o protocolo de consenso tem como objetivo, além de outras coisas, dar garantia de que nenhuma aplicação distribuída, como o EtherVoltz, terá seu estado atual modificado por um atacante. 
+Neste documento o termo blockchain será utilizado para se referir especificamente ao blockchain utilizado na máquina virtual Ethereum, mas vale lembrar que esta estrutura de dados também é utilizada em outros sistemas como Bitcoin e Litecoin. [8] [9] [14]
   
 ### 2.9 Nó Completo 
-Neste documento, "Nós" são computadores conectados à rede ethereum através de algum cliente como _geth_ ou _pyeth_ e que possuem uma cópia completa ou parcial do blockchain. O termo "nó completo" é utilizado para explicitar que o nó em questão possui uma copia do blockchain completa e válida, já que existem nós ditos leves, que podem possuir apenas uma cópia parcial do blockchain. 
-  
+Neste documento, "Nós" são computadores conectados à rede ethereum através de algum cliente como _geth_ ou _pyeth_ e que possuem uma cópia completa ou parcial do blockchain. O termo "nó completo" é utilizado para explicitar que o nó em questão possui uma copia do blockchain completa e válida, já que existem nós ditos leves, que podem possuir apenas uma cópia parcial do blockchain. [13]
   
 ### 2.10 Maquina virtual Ethereum, EVM, Computador Mundial 
-A máquina virtual Ethereum ou EVM (do inglês Ethereum Virtual Machine) é, em um sentido técnico, um computador mundial que pode ser utilizado e programado por qualquer pessoa. Possui apenas um processador e um _thread_ para executar programas, mas tanta memória quanto for necessária. 
+A máquina virtual Ethereum ou EVM (do inglês Ethereum Virtual Machine) é, em um sentido técnico, um computador mundial que pode ser utilizado e programado por qualquer pessoa. Possui apenas um processador e um _thread_ para executar programas, mas tanta memória quanto for necessária. [11]
   
 Qualquer pessoa pode escrever programas que podem executados por este computador, fazer upload deles à máquina virtual e fazer requisições ao programa para serem executadas. Por isto, a máquina virtual Ethereum é frequentemente referenciada como sendo um Computador Mundial. 
   
@@ -121,32 +103,35 @@ O computador é formado por uma rede _peer-to-peer_ de computadores que dedicam 
   
 Outra característica importante é a de que, em um sentido técnico, cada programa possui seu próprio armazenamento que persiste entre execuções. Enquanto houver demanda, a máquina virtual e todos os programas estarão disponíveis. A EVM não pode ser desligada. 
   
-Programas no computador mundial, executam exatamente como programados. A implicação disto é de que um desenvolvedor pode escrever um programa que só pode receber requisição de certas pessoas, podendo inclusive revogar o direito do próprio criador do programa de interagir com ele para garantir transparência a terceiros. Este é um recurso utilizado no núcleo do projeto EtherVoltz em que o administrador do processo eleitoral revoga parte do próprio poder de interação com o programa para dar transparência e imutabilidade ao processo. 
+Programas no computador mundial, executam exatamente como programados. A implicação disto é de que um desenvolvedor pode escrever um programa que só pode receber requisição de certas pessoas, podendo inclusive revogar o direito do próprio criador do programa de interagir com ele para garantir transparência a terceiros. Este é um recurso utilizado no núcleo do projeto EtherVoltz em que o administrador do processo eleitoral revoga parte do próprio poder de interação com o programa para dar transparência e imutabilidade ao processo. [12]
   
-### 2.11 Contrato Inteligente, _Smart Contract_ 
-Em discussões no meio Ethereum e neste documento, _smart contract_, contrato inteligente ou simplesmente contrato, pode ser visto como um programa que executa no computador mundial. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito em uma linguagem de programação chamada Solidity. 
+### 2.11 Contrato, Contrato Inteligente, _Smart Contract_ 
+_Smart contract_, contrato inteligente ou simplesmente contrato, é um termo utilizado informalmente para referir a código que executa no computador mundial [11]. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito na linguagem de programação Solidity. 
   
-Formalmente, são protocolos que funcionam como programas para regulamentar e verificar a execução de contratos sem a necessidade de intermediários para a garantia do mesmo. 
+Formalmente, são contas que contém e são controladas por código na máquina virtual Ethereum. Por padrão, contratos só podem ser controlados diretamente por chaves privadas se isto for definido em código. O efeito disto, é que um contrato não possui "dono" após _deployment_. [13]
   
 ### 2.12 Criptomoeda, Token, VoltToken 
-Uma criptomoeda é um bem digital projetado para servir como meio de troca utilizando criptografia para assegurar transações e controlar a emissão de novas unidades da moeda. 
+Uma criptomoeda é um bem digital projetado para servir como meio de troca utilizando criptografia para assegurar transações e controlar a emissão de novas unidades da moeda. [15]
   
 VoltToken é uma criptomoeda proposta e implementada na prova de conceito deste projeto, para servir como um meio do eleitor expressar sua intenção de voto. 
   
-A palavra _Token_ é por vezes utilizada para se referir ao VoltToken para evidenciar que diferente de criptomoedas comuns, esta não pode ser transferida livremente de uma pessoa para outra e que ninguém pode receber VoltTokens através do processo conhecido como "mineiração". 
+Neste documento, a palavra _Token_ é ocasionalmente utilizada para evidenciar que diferente de criptomoedas comuns, esta não pode ser transferida livremente de uma pessoa para outra.
   
-### 2.13 Carteira 
-Embora incorreto tecnicamente, o termo "carteira" é utilizado em discussões sobre criptomoedas como uma boa analogia para explicar o efeito de possuir a uma chave pública e sua chave privada associada capaz de assinar transações.  
+### 2.13 Carteira
+Embora incorreto tecnicamente, o termo "carteira" é utilizado em discussões sobre criptomoedas como uma boa analogia para explicar o efeito de possuir a uma chave pública e sua chave privada associada capaz de assinar transações. [13] [14]
   
-Nesta analogia a chave pública funciona como um "endereço" que pode ser utilizado para receber criptomoedas de outras carteiras. 
+O hash da chave pública funciona como um "endereço" que pode ser utilizado para receber criptomoedas de outras carteiras. 
   
 A chave privada pode ser vista como uma "senha" que deve ser mantida em segredo, capaz de "destrancar" a "carteira" para enviar criptomoedas a outro "endereço". 
-  
-Contratos inteligentes como o que é utilizado na prova de conceito do EtherVoltz, também possuem um par de chaves pública e privada. 
+
+### 2.14 Conta
+Contas, assim como carteiras, possuem um balanço intrínseco e uma contagem transações mantidas como parte do estado Ethereum, mas também podem possuir código Ethereum e um estado de armazenamento associado. Cada conta possui um endereço único que a identifica.[11] 
+
+Um programa hospedado na máquina virtual como o que é proposto neste documento, é uma conta cujo código é o definido no contrato inteligente.
   
 ## 3 Estratégia 
   
-A estratégia utilizada envolve transformar os votos de uma dada eleição em uma criptomoeda que existirá apenas para este fim. Um voto é, portanto, a transferência de uma moeda pertencente a carteira associada a uma urna para uma carteira associada ao candidato. 
+A estratégia utilizada envolve transformar os votos de uma dada eleição em uma criptomoeda que existirá para ser os registros digitais dos votos, de forma que um voto seja a transferência de uma moeda pertencente a uma carteira associada a uma urna para uma carteira associada um candidato. 
 `Nota: O candidato não possui nenhum poder administrativo sobre a carteira que receberá os votos.` 
   
 A regulamentação da transferência destas criptomoedas e o processo de emissão de novas unidades é definido através do código disponibilizado publicamente no contrato inteligente quando o sistema é criado. 
@@ -154,8 +139,8 @@ A regulamentação da transferência destas criptomoedas e o processo de emissã
 Após _deployment_ na máquina virtual, a regras não podem ser alteradas por ninguém, mas todas as alterações de estado e o código fonte do programa podem ser auditados por qualquer um a qualquer instante. 
   
 Na prova de conceito do projeto EtherVoltz, a criptomoeda foi batizada de VoltToken e será discutida em mais detalhes na seção 4.1. 
-  
-A estratégia envolve também o uso de um registro físico do voto ou VICE que fica sobre posse do administrador do processo eleitoral. A diferença deste modelo de VICE aos modelos propostos nas urnas de primeira e segunda geração, é que esta inclui o hash resultante da transferência do VoltToken. Detalhes sobre este modelo de VICE são discutidos na Seção 4.2. 
+
+Para garantir o principío de independência ao sistema, o projeto propõe o uso de um registro físico do voto ou VICE que fica sobre posse do administrador do processo eleitoral. A diferença deste modelo de VICE aos modelos propostos nas urnas de segunda e terceira geração, é que esta inclui o hash resultante da transferência do VoltToken. Detalhes sobre este modelo de VICE são discutidos na Seção 4.2. 
   
 Portanto, em cada voto são produzidas duas provas que se referenciam: Uma é o VICE que fica sobre controle do administrador do processo. A outra é o registro digital e que fica salvo no blockchain e sobre qual o administrador não possui controle. 
   
@@ -259,4 +244,20 @@ Embora ainda exista a necessidade da emissão e controle dos VICE para garantir 
 [6] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems. 
   
 [7] 1º Relatório do Comitê Multidisciplinar Independente - pg 34. 
- 
+
+[8] Ben Yuan, Wendy Lin, and Colin McDonnell - Blockchains and electronic health records - pg 3
+
+[9] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 2-6
+
+[10] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 9-10
+
+[11] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 15-16
+
+[12] Ethereum Wiki, What is Ethereum - acesso em https://github.com/ethereum/wiki/wiki/What-is-Ethereum - 
+27/08/2017
+
+[13] Ethereum Wiki, Glossary - acesso em https://github.com/ethereum/wiki/wiki/Glossary, 27/08/2017
+
+[14] Bitcoin Vocabulary - acesso em https://bitcoin.org/en/vocabulary, 27/08/2017
+
+[15] Usman W. Chohan - Cryptocurrencies: A Brief Thematic Review
