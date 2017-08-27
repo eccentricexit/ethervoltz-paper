@@ -22,17 +22,17 @@ Após o período eleitoral, caso um cidadão queira auditar os resultados das el
   
 Os problemas deste tipo de centralização de poderes ficam evidente no Brasil. Embora não seja objetivo deste documento discutir os efeitos da centralização de poderes em sistemas eleitorais, alguns casos bem documentados são brevemente listados a seguir: 
   
-1. **O Caso Marília, SP - 2004**: Em auditoria, os Arquivos de Espelhos de Boletins de Urna da 400º Zona Eleitoral indicavam que muitas seções eleitorais tiveram seus resultados recebidos para apuração **antes do início da votação**. Dois processos judiciais foram iniciados decorrentes destas constatações, ambos encerraram em 2009 sem julgamento final. [3] 
+1. **O Caso Marília, SP - 2004**: Em auditoria, os Arquivos de Espelhos de Boletins de Urna da 400º Zona Eleitoral indicavam que muitas seções eleitorais tiveram seus resultados recebidos para apuração **antes do início da votação**. Dois processos judiciais foram iniciados decorrentes destas constatações, ambos encerraram em 2009 sem julgamento final. [1] 
   
-2. **O Caso Itajaí, SC - 2008**: Foi constatada burla intencional na cerimônia de carga e lacração das urnas em que nenhuma urna preparada para a votação passou pelo teste obrigatório prescrito pelo Art. 32 da Res. TSE 22.712/08. Um caso foi o da 97ª Zona Eleitoral onde a urna da seção 236 que foi sorteada para o teste obrigatório **foi substituída por outra** na hora do teste, preparada exclusivamente para este fim. A urna que foi utilizada para o teste foi posteriormente colocada à parte e recarregada, procedimento que destruiu eventuais provas nela gravadas. [7] 
+2. **O Caso Itajaí, SC - 2008**: Foi constatada burla intencional na cerimônia de carga e lacração das urnas em que nenhuma urna preparada para a votação passou pelo teste obrigatório prescrito pelo Art. 32 da Res. TSE 22.712/08. Um caso foi o da 97ª Zona Eleitoral onde a urna da seção 236 que foi sorteada para o teste obrigatório **foi substituída por outra** na hora do teste, preparada exclusivamente para este fim. A urna que foi utilizada para o teste foi posteriormente colocada à parte e recarregada, procedimento que destruiu eventuais provas nela gravadas. [2] 
   
-3. **O Caso Diadema, SP - 2000**: Foram negados a todos os partidos que solicitaram o acesso aos registros digitais dos votos realizados nas urnas eletrônicas. Somente 9 meses após a eleição os partidos obtiveram acesso, não aos registros dos votos, mas aos Arquivos de LOG das urnas que apontaram que **todas** as urnas haviam sido carregadas **fora** da cerimônia oficial de carga e lacramento das urnas. [1] 
+3. **O Caso Diadema, SP - 2000**: Foram negados a todos os partidos que solicitaram o acesso aos registros digitais dos votos realizados nas urnas eletrônicas. Somente 9 meses após a eleição os partidos obtiveram acesso, não aos registros dos votos, mas aos Arquivos de LOG das urnas que apontaram que **todas** as urnas haviam sido carregadas **fora** da cerimônia oficial de carga e lacramento das urnas. [3] 
   
 4. **O Caso Alagoas - 2006**: Diversas irregularidades nos arquivos gerados pelas urnas foram detectadas por auditores externos [4]. Frente as evidências, o administrador negou acesso aos arquivos solicitados pelos auditores e transferiu ao requerente uma cobrança antecipada no valor de R$ 2 milhões para que fosse desenvolvida uma perícia das urnas. Diante do não pagamento do valor proibitivo, o requerente foi multado e condenado por litigância de má-fé.  
 Mesmo tendo apresentado provas de inconsistência no funcionamento das urnas, a perícia das mesmas não foi permitida. [5] 
   
   
-5. **Assinaturas Divergentes - 2002 e 2008**: Nas eleições de 2º Turno de 2002 e 2008, foram detectadas durante verificação dos arquivos carregados nas urnas eletrônicas, a presença de um conjunto de arquivos com resumos digitais diferentes das publicadas nas respectivas cerimônias oficiais de lacramento dos sistemas. A providência tomada pelo administrador frente a estas descobertas, foi a de publicar novas Tabelas de Hash, calculadas **a portas fechadas e fora de uma cerimônia oficial**. A perícia das urnas foi indeferida e as Tabelas de Hash originais que demonstravam a impropriedade, foram removidas do local. [2] 
+5. **Assinaturas Divergentes - 2002 e 2008**: Nas eleições de 2º Turno de 2002 e 2008, foram detectadas durante verificação dos arquivos carregados nas urnas eletrônicas, a presença de um conjunto de arquivos com resumos digitais diferentes das publicadas nas respectivas cerimônias oficiais de lacramento dos sistemas. A providência tomada pelo administrador frente a estas descobertas, foi a de publicar novas Tabelas de Hash, calculadas **a portas fechadas e fora de uma cerimônia oficial**. A perícia das urnas foi indeferida e as Tabelas de Hash originais que demonstravam a impropriedade, foram removidas do local. [6] 
   
   
 Este projeto propõe a utilização do _blockchain_ _Ethereum_ como o _backend_ que gerencia e armazena os registros digitais dos votos. Embora algumas características da estratégia estejam listadas abaixo, as vantagens ficarão mais evidentes na Seção 4.4 Auditorias deste documento. 
@@ -48,12 +48,14 @@ Este projeto propõe a utilização do _blockchain_ _Ethereum_ como o _backend_ 
 Para facilidar a explicação altamente abstrata do funcionamento da solução proposta, são definidas nesta seção diversos termos utilizados ao longo do documento. Embora definidos brevemente aqui, o leitor se beneficiará se possuir conhecimento sobre os mecanismos envolvidas em sistemas eleitorais, desenvolvimento de software e criptografia. O Leitor se beneficiará principalmente se possuir conhecimento sobre o funcionamento de _blockchains_ como o Bitcoin e Ethereum. 
   
 ### 2.1 Princípio da Independência de Software em Sistemas Eleitorais 
-A tradução da definição apresentada pelo autor do termo, que é também um dos autores da chave de assinatura digital RSA [6]:  
+A tradução da definição apresentada pelo autor do termo, que é também um dos autores da chave de assinatura digital RSA [7]:  
   
 > Um sistema eleitoral é independente do software se uma modificação ou erro não-detectado no seu software não pode causar uma modificação ou erro indetectável no resultado da apuração. 
   
 ### 2.2 VICE  
-O VICE ou Voto Impresso Conferível Pelo Eleitor é um documento em papel que é apresentado ao eleitor no momento da votação. O VICE é apresentado para que ele possa confirmar visualmente o voto, mas ao qual ele não tem contato físico (e nem leva para casa). Os termos VICE e registro de voto físico são utilizados de forma intercambiável neste documento e significam a mesma coisa. 
+O VICE ou Voto Impresso Conferível Pelo Eleitor é um documento em papel que é apresentado ao eleitor no momento da votação. O VICE é apresentado para que ele possa confirmar visualmente o voto, mas ao qual ele não tem contato físico (e nem leva para casa). [8]
+
+Os termos VICE e registro de voto físico são utilizados de forma intercambiável neste documento e significam a mesma coisa. 
   
 ### 2.3 Livro Razão Público 
 Livro razão é o nome dado a um documento que agrupa modificações ordenadas do estado de alguma informação. _Blockchains_ são comumente comparados a livros razão públicos, pois são uma sequência de alterações de estado ordenadas uma após a outra e cujas alterações dependem necessariamente do estado anterior: 
@@ -70,18 +72,18 @@ ID | Remetente | Operação | Parâmetros | Destinatário
 No exemplo acima, a transação número 3927 só será incluída no livro razão se Carlos possuir 1 real ou mais. 
   
 ### 2.4 Estado  
-O estado da aplicação é o conjunto de todas as informações e variáveis da aplicação em um determinado instante e que um sistema deve rastrear.[9] [13] Em sistemas mais simples isto pode ser apenas o balanço de contas e em sistemas mais complexos, estruturas de dados que fazem parte da aplicação.
+O estado da aplicação é o conjunto de todas as informações e variáveis da aplicação em um determinado instante e que um sistema deve rastrear.[9] [10] Em sistemas mais simples isto pode ser apenas o balanço de contas e em sistemas mais complexos, estruturas de dados que fazem parte da aplicação.
   
 ### 2.5 Transação  
 Uma transação é uma mensagem enviada à aplicação e que inclui dados sobre determinada operação que o remetente deseja executar. As transações discutidas neste documento possuem, além de outras informações: 
 - O endereço do destinatário. Na maioria dos casos aqui discutidos, o destinatário é a aplicação EtherVoltz. O endereço também é a chave pública do destinatário. 
 - Uma assinatura criptográfica que comprova o remetente da transação. 
-- Informações sobre a operação a ser realizada, como o nome da operação e parâmetros. [8] [9] [13]
+- Informações sobre a operação a ser realizada, como o nome da operação e parâmetros. [9] [10] [11]
   
 Sempre que uma transação é confirmada, um _hash_  que identifica esta transação individualmente é gerado a partir do conjunto de informações contidas nela e na história do blockchain até o momento. Com este _hash_ é possível solicitar à EVM informações sobre a transação. Este recurso é explorado no EtherVoltz para garantir a rastreabilidade das operações realizadas na aplicação durante uma auditoria. 
   
 ### 2.6 Bloco 
-Um bloco "b" é um pacote de dados contendo uma lista de transações T, também uma referência à um bloco anterior "d" e opcionalmente, mais informações. [9] [13] A inclusão de um bloco no blockchain implica na atualização do estado, mas o bloco só é incluído se for considerado válido. [8] [14] Um bloco b é considerado válido se:  
+Um bloco "b" é um pacote de dados contendo uma lista de transações T, também uma referência à um bloco anterior "d" e opcionalmente, mais informações. [9] [10] A inclusão de um bloco no blockchain implica na atualização do estado, mas o bloco só é incluído se for considerado válido. [11] [12] Um bloco b é considerado válido se:  
 1. Todas as transações t pertencentes a T listadas nele são válidas. 
 3. O bloco "d" ao qual ele faz referência é válido. 
 2. As condições impostas pelo protocolo de consenso são atingidas.
@@ -89,13 +91,13 @@ Um bloco "b" é um pacote de dados contendo uma lista de transações T, também
 ### 2.7 Blockchain 
 Um blockchain B=[b0,b1,b2,b3...] é uma sequência de blocos bn em que cada bloco faz referência ao bloco precedente até o bloco gênesis "b0". Um _blockchain_ é dito válido se cada bloco b pertencente a B for válido. 
 Em discussões sobre desenvolvimento de aplicações distribuídas empoderadas por tecnologia blockchain - e em alguns trechos neste documento-, é comum se referir ao mesmo como um banco de dados distribuído, visto que existem copias dela armazenadas nos computadores dos milhares de nós e mineradores espalhados pelo mundo. 
-Neste documento o termo blockchain será utilizado para se referir especificamente ao blockchain utilizado na máquina virtual Ethereum, mas vale lembrar que esta estrutura de dados também é utilizada em outros sistemas como Bitcoin e Litecoin. [8] [9] [14]
+Neste documento o termo blockchain será utilizado para se referir especificamente ao blockchain utilizado na máquina virtual Ethereum, mas vale lembrar que esta estrutura de dados também é utilizada em outros sistemas como Bitcoin e Litecoin. [8] [9] [12]
   
 ### 2.9 Nó Completo 
-Neste documento, "Nós" são computadores conectados à rede ethereum através de algum cliente como _geth_ ou _pyeth_ e que possuem uma cópia completa ou parcial do blockchain. O termo "nó completo" é utilizado para explicitar que o nó em questão possui uma copia do blockchain completa e válida, já que existem nós ditos leves, que podem possuir apenas uma cópia parcial do blockchain. [13]
+Neste documento, "Nós" são computadores conectados à rede ethereum através de algum cliente como _geth_ ou _pyeth_ e que possuem uma cópia completa ou parcial do blockchain. O termo "nó completo" é utilizado para explicitar que o nó em questão possui uma copia do blockchain completa e válida, já que existem nós ditos leves, que podem possuir apenas uma cópia parcial do blockchain. [10]
   
 ### 2.10 Maquina virtual Ethereum, EVM, Computador Mundial 
-A máquina virtual Ethereum ou EVM (do inglês Ethereum Virtual Machine) é, em um sentido técnico, um computador mundial que pode ser utilizado e programado por qualquer pessoa. Possui apenas um processador e um _thread_ para executar programas, mas tanta memória quanto for necessária. [11]
+A máquina virtual Ethereum ou EVM (do inglês Ethereum Virtual Machine) é, em um sentido técnico, um computador mundial que pode ser utilizado e programado por qualquer pessoa. Possui apenas um processador e um _thread_ para executar programas, mas tanta memória quanto for necessária. [13]
   
 Qualquer pessoa pode escrever programas que podem executados por este computador, fazer upload deles à máquina virtual e fazer requisições ao programa para serem executadas. Por isto, a máquina virtual Ethereum é frequentemente referenciada como sendo um Computador Mundial. 
   
@@ -103,12 +105,12 @@ O computador é formado por uma rede _peer-to-peer_ de computadores que dedicam 
   
 Outra característica importante é a de que, em um sentido técnico, cada programa possui seu próprio armazenamento que persiste entre execuções. Enquanto houver demanda, a máquina virtual e todos os programas estarão disponíveis. A EVM não pode ser desligada. 
   
-Programas no computador mundial, executam exatamente como programados. A implicação disto é de que um desenvolvedor pode escrever um programa que só pode receber requisição de certas pessoas, podendo inclusive revogar o direito do próprio criador do programa de interagir com ele para garantir transparência a terceiros. Este é um recurso utilizado no núcleo do projeto EtherVoltz em que o administrador do processo eleitoral revoga parte do próprio poder de interação com o programa para dar transparência e imutabilidade ao processo. [12]
+Programas no computador mundial, executam exatamente como programados. A implicação disto é de que um desenvolvedor pode escrever um programa que só pode receber requisição de certas pessoas, podendo inclusive revogar o direito do próprio criador do programa de interagir com ele para garantir transparência a terceiros. Este é um recurso utilizado no núcleo do projeto EtherVoltz em que o administrador do processo eleitoral revoga parte do próprio poder de interação com o programa para dar transparência e imutabilidade ao processo. [14]
   
 ### 2.11 Contrato, Contrato Inteligente, _Smart Contract_ 
-_Smart contract_, contrato inteligente ou simplesmente contrato, é um termo utilizado informalmente para referir a código que executa no computador mundial [11]. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito na linguagem de programação Solidity. 
+_Smart contract_, contrato inteligente ou simplesmente contrato, é um termo utilizado informalmente para referir a código que executa no computador mundial [10] [13]. O núcleo da prova de conceito concebida no projeto EtherVoltz é um contrato inteligente escrito na linguagem de programação Solidity. 
   
-Formalmente, são contas que contém e são controladas por código na máquina virtual Ethereum. Por padrão, contratos só podem ser controlados diretamente por chaves privadas se isto for definido em código. O efeito disto, é que um contrato não possui "dono" após _deployment_. [13]
+Formalmente, são contas que contém e são controladas por código na máquina virtual Ethereum. Por padrão, contratos só podem ser controlados diretamente por chaves privadas se isto for definido em código. O efeito disto, é que um contrato não possui "dono" após _deployment_. [10]
   
 ### 2.12 Criptomoeda, Token, VoltToken 
 Uma criptomoeda é um bem digital projetado para servir como meio de troca utilizando criptografia para assegurar transações e controlar a emissão de novas unidades da moeda. [15]
@@ -118,14 +120,14 @@ VoltToken é uma criptomoeda proposta e implementada na prova de conceito deste 
 Neste documento, a palavra _Token_ é ocasionalmente utilizada para evidenciar que diferente de criptomoedas comuns, esta não pode ser transferida livremente de uma pessoa para outra.
   
 ### 2.13 Carteira
-Embora incorreto tecnicamente, o termo "carteira" é utilizado em discussões sobre criptomoedas como uma boa analogia para explicar o efeito de possuir a uma chave pública e sua chave privada associada capaz de assinar transações. [13] [14]
+Embora incorreto tecnicamente, o termo "carteira" é utilizado em discussões sobre criptomoedas como uma boa analogia para explicar o efeito de possuir a uma chave pública e sua chave privada associada capaz de assinar transações. [10] [12]
   
 O hash da chave pública funciona como um "endereço" que pode ser utilizado para receber criptomoedas de outras carteiras. 
   
 A chave privada pode ser vista como uma "senha" que deve ser mantida em segredo, capaz de "destrancar" a "carteira" para enviar criptomoedas a outro "endereço". 
 
 ### 2.14 Conta
-Contas, assim como carteiras, possuem um balanço intrínseco e uma contagem transações mantidas como parte do estado Ethereum, mas também podem possuir código Ethereum e um estado de armazenamento associado. Cada conta possui um endereço único que a identifica.[11] 
+Contas, assim como carteiras, possuem um balanço intrínseco e uma contagem transações mantidas como parte do estado Ethereum, mas também podem possuir código Ethereum e um estado de armazenamento associado. Cada conta possui um endereço único que a identifica.[13] 
 
 Um programa hospedado na máquina virtual como o que é proposto neste documento, é uma conta cujo código é o definido no contrato inteligente.
   
@@ -231,33 +233,35 @@ Embora ainda exista a necessidade da emissão e controle dos VICE para garantir 
   
   
 ## 5. Referências     
-[1] 1º Relatório do Comitê Multidisciplinar Independente - pg 24. 
-  
-[2] 1º Relatório do Comitê Multidisciplinar Independente - pg 25. 
-  
-[3] 1º Relatório do Comitê Multidisciplinar Independente - pg 27. 
-  
+
+[1] 1º Relatório do Comitê Multidisciplinar Independente - pg 27. 
+
+[2] 1º Relatório do Comitê Multidisciplinar Independente - pg 34. 
+
+[3] 1º Relatório do Comitê Multidisciplinar Independente - pg 24. 
+
 [4] Fernandes, C.T. - Radiografia das Urnas Eleitorais. S. J. dos Campos: ITA, dezembro de 2006. 
-  
+
 [5] 1º Relatório do Comitê Multidisciplinar Independente - pg 27. 
   
-[6] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems. 
+[6] 1º Relatório do Comitê Multidisciplinar Independente - pg 25. 
   
-[7] 1º Relatório do Comitê Multidisciplinar Independente - pg 34. 
+[7] RIVEST, Ronald L. - On the notion of 'software independence' in voting systems. 
 
-[8] Ben Yuan, Wendy Lin, and Colin McDonnell - Blockchains and electronic health records - pg 3
+[8] Brunazo, Amilcar  - Modelos e Gerações
+dos Equipamentos de Votação Eletrônica - acesso em http://www.brunazo.eng.br/voto-e/textos/modelosUE.htm#3o, 27/08/2017
 
 [9] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 2-6
 
-[10] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 9-10
+[10] Ethereum Wiki, Glossary - acesso em https://github.com/ethereum/wiki/wiki/Glossary, 27/08/2017
 
-[11] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 15-16
+[11] Ben Yuan, Wendy Lin, and Colin McDonnell - Blockchains and electronic health records - pg 3
 
-[12] Ethereum Wiki, What is Ethereum - acesso em https://github.com/ethereum/wiki/wiki/What-is-Ethereum - 
+[12] Bitcoin Vocabulary - acesso em https://bitcoin.org/en/vocabulary, 27/08/2017
+
+[13] GAVIN WOOD - ETHEREUM:  A  SECURE  DECENTRALISED  GENERALISED  TRANSACTION  LEDGER - pg 15-16
+
+[14] Ethereum Wiki, What is Ethereum - acesso em https://github.com/ethereum/wiki/wiki/What-is-Ethereum - 
 27/08/2017
-
-[13] Ethereum Wiki, Glossary - acesso em https://github.com/ethereum/wiki/wiki/Glossary, 27/08/2017
-
-[14] Bitcoin Vocabulary - acesso em https://bitcoin.org/en/vocabulary, 27/08/2017
 
 [15] Usman W. Chohan - Cryptocurrencies: A Brief Thematic Review
