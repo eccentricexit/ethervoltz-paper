@@ -1,2 +1,2 @@
 # EtherVotes Paper
-This repository holds the paper for the EtherVotes project.
+This repository holds papers for the [EtherVoltz project](https://github.com/mtsalenc/ethervoltz).
